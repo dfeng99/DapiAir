@@ -1,0 +1,1 @@
+adt -package -target apk -storetype pkcs12 -keystore ~/Documents/workspace/DapiAirCert.p12 -storepass 531202 ../bin/DapiAir.apk Main-app.xml Main.swf 
