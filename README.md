@@ -1,27 +1,29 @@
+This is a fork from bbb-air-client project.
+
 Use Flash Builder to develop it.
 
 * clone this repo
 * open Flash Builder
 * Switch Workspace to the parent directory of your cloned repo
 * File-New-Flex Mobile Project
-* type "bbb-air-client"
+* type "DapiAir"
 * Use default SDK (Flex 4.6.0)
 * Next, then Finish
 
 Add extra arguments to Flex Compiler:
 
-* right-click on bbb-air-client project
+* right-click on DapiAir project
 * Properties-Flex Compiler
 * add the following as Additional compiler arguments:
 
 ```
--locale=en_US,pt_BR -source-path=./locale/{locale} -resource-bundle-list=used-resource-bundles.txt -allow-source-path-overlap=true
+-locale=en_US,pt_BR,zh_TW,zh_CN -source-path=./locale/{locale} -resource-bundle-list=used-resource-bundles.txt -allow-source-path-overlap=true
 ```
 
 Include the Air Native Extensions (ANE) in the project:
 
 * Project -> Properties -> Flex Build Path -> Native Extensions -> Add ANE...
-* Select the *.ane files in the bbb-air-client\libs folder
+* Select the *.ane files in the DapiAir\libs folder
 * still on project properties, go to Flex Build Packaging -> Apple iOS -> Native Extensions
 * check the Package checkbox for the ane files, do the same for android on Flex Build Packaging -> Google Android
 * on Flex Build Packaging -> BlackBerry Tablet OS, uncheck "enable this target platform" 
