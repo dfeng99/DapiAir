@@ -23,6 +23,7 @@ package org.bigbluebutton {
 	import org.bigbluebutton.core.IChatMessageService;
 	import org.bigbluebutton.core.IDeskshareConnection;
 	import org.bigbluebutton.core.ILoginService;
+	import org.bigbluebutton.core.IPollingService;
 	import org.bigbluebutton.core.IPresentationService;
 	import org.bigbluebutton.core.ISaveData;
 	import org.bigbluebutton.core.IUsersService;
@@ -30,6 +31,7 @@ package org.bigbluebutton {
 	import org.bigbluebutton.core.IVoiceConnection;
 	import org.bigbluebutton.core.IWhiteboardService;
 	import org.bigbluebutton.core.LoginService;
+	import org.bigbluebutton.core.PollingService;
 	import org.bigbluebutton.core.PresentationService;
 	import org.bigbluebutton.core.SaveData;
 	import org.bigbluebutton.core.UsersService;
@@ -65,6 +67,7 @@ package org.bigbluebutton {
 			injector.map(IUsersService).toSingleton(UsersService);
 			injector.map(IChatMessageService).toSingleton(ChatMessageService);
 			injector.map(IPresentationService).toSingleton(PresentationService);
+			injector.map(IPollingService).toSingleton(PollingService);
 			injector.map(IWhiteboardService).toSingleton(WhiteboardService);
 			injector.map(IChatMessagesSession).toSingleton(ChatMessagesSession);
 			injector.map(IDeskshareConnection).toSingleton(DeskshareConnection);

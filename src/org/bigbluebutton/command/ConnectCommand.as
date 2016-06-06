@@ -1,14 +1,13 @@
 package org.bigbluebutton.command {
 	
-	import flash.media.Camera;
 	import mx.collections.ArrayCollection;
 	import mx.core.FlexGlobals;
-	import mx.messaging.management.Attribute;
-	import mx.utils.ObjectUtil;
+	
 	import org.bigbluebutton.command.DisconnectUserSignal;
 	import org.bigbluebutton.core.IBigBlueButtonConnection;
 	import org.bigbluebutton.core.IChatMessageService;
 	import org.bigbluebutton.core.IDeskshareConnection;
+	import org.bigbluebutton.core.IPollingService;
 	import org.bigbluebutton.core.IPresentationService;
 	import org.bigbluebutton.core.ISaveData;
 	import org.bigbluebutton.core.IUsersService;
@@ -22,6 +21,7 @@ package org.bigbluebutton.command {
 	import org.bigbluebutton.view.navigation.pages.PagesENUM;
 	import org.bigbluebutton.view.navigation.pages.disconnect.enum.DisconnectEnum;
 	import org.bigbluebutton.view.navigation.pages.login.openroom.recentrooms.Room;
+	
 	import robotlegs.bender.bundles.mvcs.Command;
 	
 	public class ConnectCommand extends Command {
@@ -75,6 +75,9 @@ package org.bigbluebutton.command {
 		[Inject]
 		public var saveData:ISaveData;
 		
+		[Inject]
+		public var pollingService:IPollingService;
+		
 		override public function execute():void {
 			loadConfigOptions();
 			connection.uri = uri;
@@ -89,6 +92,7 @@ package org.bigbluebutton.command {
 			chatService.setupMessageSenderReceiver();
 			whiteboardService.setupMessageSenderReceiver();
 			userSession.userId = connection.userId;
+			pollingService.setupMessageSenderReceiver();
 			// Set up users message sender in order to send the "joinMeeting" message:
 			usersService.setupMessageSenderReceiver();
 			//send the join meeting message, then wait for the response
@@ -157,14 +161,13 @@ package org.bigbluebutton.command {
 			userSession.videoConnection = videoConnection;
 			voiceConnection.uri = userSession.config.getConfigFor("PhoneModule").@uri;
 			userSession.voiceConnection = voiceConnection;
+			var audioOptions:Object = new Object();
 			if (userSession.phoneAutoJoin && userSession.phoneSkipCheck) {
 				var forceListenOnly:Boolean = (userSession.config.getConfigFor("PhoneModule").@forceListenOnly.toString().toUpperCase() == "TRUE") ? true : false;
-				var audioOptions:Object = new Object();
 				audioOptions.shareMic = userSession.userList.me.voiceJoined = !forceListenOnly;
 				audioOptions.listenOnly = userSession.userList.me.listenOnly = forceListenOnly;
 				shareMicrophoneSignal.dispatch(audioOptions);
-			} else {
-				var audioOptions:Object = new Object();
+			} else {	
 				audioOptions.shareMic = userSession.userList.me.voiceJoined = false;
 				audioOptions.listenOnly = userSession.userList.me.listenOnly = true;
 				shareMicrophoneSignal.dispatch(audioOptions);
@@ -203,7 +206,7 @@ package org.bigbluebutton.command {
 					}
 				}
 				if (!roomExists) {
-					var room = new Room(new Date(), roomUrl, roomName);
+					var room:Room = new Room(new Date(), roomUrl, roomName);
 					rooms.addItem(room);
 					if (rooms.length > 5) {
 						rooms.removeItemAt(0);
@@ -240,7 +243,7 @@ package org.bigbluebutton.command {
 			userSession.userList.allUsersAddedSignal.remove(successUsersAdded);
 		}
 		
-		private function displayAudioSettings(micLocked:Boolean = false) {
+		private function displayAudioSettings(micLocked:Boolean = false):void {
 			userSession.lockSettings.disableMicSignal.remove(displayAudioSettings);
 			if (userSession.phoneAutoJoin && !userSession.phoneSkipCheck && (userSession.userList.me.isModerator() || !userSession.lockSettings.disableMic)) {
 				userUISession.pushPage(PagesENUM.AUDIOSETTINGS);

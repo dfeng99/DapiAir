@@ -3,8 +3,113 @@
 				xmlns:s="library://ns.adobe.com/flex/spark"
 				xmlns:mx="library://ns.adobe.com/flex/mx"
 				xmlns:view="org.bigbluebutton.core.view.*"
-				xmlns:whiteboard="org.bigbluebutton.view.navigation.pages.whiteboard.*">
-
+				xmlns:whiteboard="org.bigbluebutton.view.navigation.pages.whiteboard.*"
+				xmlns:mate="http://mate.asfusion.com/"
+				xmlns:poll="org.bigbluebutton.view.navigation.pages.polling.*"
+				xmlns:map="org.bigbluebutton.command.polling.map.*">
+	<fx:Declarations>
+		<mate:Dispatcher id="globalDispatcher" />
+		<mate:Listener type="{PollStartedEvent.POLL_STARTED}" method="pollStartedHandler" />
+		<mate:Listener type="{PollStoppedEvent.POLL_STOPPED}" method="pollStoppedHandler" />
+		<map:PollEventMap id="pollEventMap" />
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.asfusion.mate.events.Dispatcher;
+			
+			import mx.resources.ResourceManager;
+			
+			import spark.components.Button;
+			
+			import org.bigbluebutton.command.polling.PollStartedEvent;
+			import org.bigbluebutton.command.polling.PollStoppedEvent;
+			import org.bigbluebutton.command.polling.VotePollEvent;
+			import org.bigbluebutton.core.IPollDataService;
+			import org.bigbluebutton.core.PollMessageSender;
+			import org.bigbluebutton.model.IUserSession;
+			import org.bigbluebutton.model.polling.PollingModel;
+			import org.osflash.signals.ISignal;
+			import org.osflash.signals.Signal;
+			
+			private var dispatcher:Dispatcher = new Dispatcher();
+			
+			[Inject]
+			public var eventDispatcher:IEventDispatcher;
+			
+			[Embed(source="../polling/assets/Poll.mp3")]
+			private var noticeSoundClass:Class;
+			private var noticeSound:Sound = new noticeSoundClass() as Sound;
+			private var model:PollingModel;
+			private var sender:PollMessageSender;
+			private var dataService:IPollDataService;
+			public  var userSession:IUserSession;
+			private var _sendMessageOnSuccessSignal:ISignal = new Signal();
+			private var _sendMessageOnFailureSignal:ISignal = new Signal();
+			private var thumbY:Number;
+			
+			private function pollStartedHandler(e:PollStartedEvent):void {
+				//switch to vote state
+				setControlBarState("vote");
+				//clear the past buttons
+				try{
+					while(pollVoteBox.numElements > 0)
+						pollVoteBox.removeAllElements();
+					pollVoteBox.removeChildren();
+				} catch(e:Error){
+					trace("Failed to remove children votebtn from votebox");
+				}
+				//display the vote buttons
+				var voteBtn:Button;
+				var numBtns:int = e.poll.answers.length;
+				var btnWidth:int = 100/numBtns;
+				for (var i:int=0, ti:int=slide0.tabIndex; i<numBtns; i++) {
+					voteBtn = new Button();
+					voteBtn.percentWidth = btnWidth;
+					voteBtn.height = 70;
+					voteBtn.setStyle("fontSize", 14);
+					voteBtn.tabIndex = ++ti;
+					
+					var localizedKey: String = ResourceManager.getInstance().getString('resources','polling.answer.'+e.poll.answers[i].key);
+					
+					if (localizedKey == null || localizedKey == "" || localizedKey == "undefined") {
+						localizedKey = e.poll.answers[i].key;
+					}
+					
+					voteBtn.label = localizedKey;
+					voteBtn.name = e.poll.answers[i].id;
+					voteBtn.addEventListener(MouseEvent.CLICK, voteButtonClickHandler);
+					pollVoteBox.addElement(voteBtn);
+				}
+				//                              dispatcher.dispatchEvent( new overlayHighlighterCanvasEvent(userSession) );
+				var tSC:SoundChannel = noticeSound.play(0, 0, new SoundTransform(0.25));
+			}
+			
+			private function pollStoppedHandler(msg:Object):void{
+				trace("Poll stopped!");
+			}
+			
+			private function voteButtonClickHandler(e:MouseEvent):void {
+				//still have to figure out how to determine which button was pressed
+				trace("vote clicked - answer is ", [e.target.name]);
+				setControlBarState("hide");
+				dispatcher.dispatchEvent(new VotePollEvent(Number(e.target.name)));
+			}
+			
+			private function setControlBarState(state:String):void {
+				if (state == "vote") {
+					pollVoteBox.visible = true;
+					pollVoteBox.includeInLayout = true;
+				} else if (state == "presenter") {
+					pollVoteBox.visible = false;
+					pollVoteBox.includeInLayout = false;
+				} else {
+					pollVoteBox.visible = false;
+					pollVoteBox.includeInLayout = false;
+				}
+			}
+		]]>
+	</fx:Script>
+	
 	<s:Group id="content0"
 			 width="100%"
 			 height="100%">
@@ -26,5 +131,6 @@
 						 height="100%" />
 			<whiteboard:WhiteboardCanvas id="whiteboardCanvas0" />
 		</s:Group>
+		<s:HGroup id="pollVoteBox" width="100%" height="100%" visible="false" includeInLayout="false" horizontalAlign="center" />
 	</s:Group>
 </view:NoTabView>
