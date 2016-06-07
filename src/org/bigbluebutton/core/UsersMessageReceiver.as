@@ -7,11 +7,7 @@ package org.bigbluebutton.core {
 	import org.bigbluebutton.model.IMessageListener;
 	import org.bigbluebutton.model.IUserSession;
 	import org.bigbluebutton.model.User;
-	import org.bigbluebutton.model.UserSession;
 	import org.bigbluebutton.view.navigation.pages.disconnect.enum.DisconnectEnum;
-	import org.osflash.signals.ISignal;
-	import org.osflash.signals.Signal;
-	import org.osmf.logging.Log;
 	
 	public class UsersMessageReceiver implements IMessageListener {
 		private const LOG:String = "UsersMessageReceiver::";
@@ -124,7 +120,7 @@ package org.bigbluebutton.core {
 			}
 		}
 		
-		private function handleSipVideoUpdate(msg:Object) {
+		private function handleSipVideoUpdate(msg:Object):void {
 			trace("handleSipVideoUpdate " + msg.msg);
 			var map:Object = JSON.parse(msg.msg);
 			if (lastSipEvent != map) {
@@ -147,7 +143,7 @@ package org.bigbluebutton.core {
 			}
 		}
 		
-		private function handleMeetingMuted(m:Object) {
+		private function handleMeetingMuted(m:Object):void {
 			var msg:Object = JSON.parse(m.msg);
 			trace("handleMeetingMuted: " + ObjectUtil.toString(msg));
 			userSession.meetingMuted = msg.meetingMuted;

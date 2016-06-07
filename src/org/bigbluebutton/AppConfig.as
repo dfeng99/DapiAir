@@ -42,7 +42,6 @@ package org.bigbluebutton {
 	import org.bigbluebutton.model.IConferenceParameters;
 	import org.bigbluebutton.model.IUserSession;
 	import org.bigbluebutton.model.IUserUISession;
-	import org.bigbluebutton.model.LockSettings;
 	import org.bigbluebutton.model.UserSession;
 	import org.bigbluebutton.model.UserUISession;
 	import org.bigbluebutton.model.chat.ChatMessagesSession;

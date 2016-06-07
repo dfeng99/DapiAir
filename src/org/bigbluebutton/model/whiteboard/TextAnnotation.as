@@ -1,18 +1,17 @@
 package org.bigbluebutton.model.whiteboard {
 	
-	import flash.text.AntiAliasType;
-	import flash.text.TextField;
-	import flash.text.TextFormat;
-	import flashx.textLayout.formats.VerticalAlign;
-	import org.bigbluebutton.view.navigation.pages.whiteboard.IWhiteboardCanvas;
 	import spark.components.RichText;
+	
+	import flashx.textLayout.formats.VerticalAlign;
+	
+	import org.bigbluebutton.view.navigation.pages.whiteboard.IWhiteboardCanvas;
 	
 	public class TextAnnotation implements IAnnotation {
 		private var _type:String = "undefined";
 		
 		private var _anID:String = "undefined";
 		
-		private var _whiteboardID = "undefined";
+		private var _whiteboardID:String = "undefined";
 		
 		private var _status:String = AnnotationStatus.DRAW_START;
 		
@@ -41,15 +40,15 @@ package org.bigbluebutton.model.whiteboard {
 			_anID = anID;
 			_whiteboardID = whiteboardID;
 			_status = status;
-			_color = color;
-			_fontSize = fontSize;
+			_color = isNaN(color) ? 0xff0000 : color;
+			_fontSize = isNaN(fontSize) ? 18 : fontSize;
 			_calcedFontSize = calcedFontSize;
 			_dataPoints = dataPoints;
 			_textBoxHeight = textBoxHeight;
 			_textBoxWidth = textBoxWidth;
 			_x = x;
 			_y = y;
-			_text = text;
+			_text = text == null || text == "" ? "Annotation" : text;
 		}
 		
 		public function get type():String {

@@ -31,7 +31,7 @@ package org.bigbluebutton.command.polling
 		public function PollShowResultEvent(result:SimplePollResult)
 		{
 			super(SHOW_RESULT, true, false);
-      this.result = result;
+      		this.result = result;
 		}
 		
 	}

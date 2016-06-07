@@ -69,9 +69,13 @@ package org.bigbluebutton.core {
 		
 		private function handleNewAnnotationCommand(message:Object):void {
 			trace(LOG + "handleNewAnnotationCommand received");
-			message = JSON.parse(message.msg).shape.shape;
-			AnnotationUtil.createAnnotation(message);
-			var tempAnnotation:IAnnotation = AnnotationUtil.createAnnotation(message);
+
+			var map:Object = JSON.parse(message.msg);
+			var an:Object = map.shape as Object;
+			if(an.type != "poll_result")
+				an = an.shape;
+
+			var tempAnnotation:IAnnotation = AnnotationUtil.createAnnotation(an);
 			if (tempAnnotation != null) {
 				_userSession.presentationList.addAnnotation(tempAnnotation);
 			} else {
@@ -93,7 +97,9 @@ package org.bigbluebutton.core {
 				var tempAnnotations:Array = new Array();
 				for (var i:int = 0; i < msg.count; i++) {
 					var an:Object = annotations[i] as Object;
-					var tempAnnotation:IAnnotation = AnnotationUtil.createAnnotation(an.shapes);
+					if(an.type != "poll_result")
+						an = an.shapes;
+					var tempAnnotation:IAnnotation = AnnotationUtil.createAnnotation(an);
 					if (tempAnnotation != null) {
 						tempAnnotations.push(tempAnnotation);
 					} else {

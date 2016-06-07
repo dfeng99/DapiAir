@@ -129,7 +129,7 @@
 						 scaleContent="true"
 						 width="100%"
 						 height="100%" />
-			<whiteboard:WhiteboardCanvas id="whiteboardCanvas0" />
+			<whiteboard:WhiteboardCanvas id="whiteboardCanvas0" visible="true"/>
 		</s:Group>
 		<s:HGroup id="pollVoteBox" width="100%" height="100%" visible="false" includeInLayout="false" horizontalAlign="center" />
 	</s:Group>

@@ -8,5 +8,6 @@ package org.bigbluebutton.model.whiteboard
 		public static const ELLIPSE:String = "ellipse";
 		public static const LINE:String = "line";
 		public static const TEXT:String = "text";
+		public static const POLL:String = "poll_result";
 	}
 }

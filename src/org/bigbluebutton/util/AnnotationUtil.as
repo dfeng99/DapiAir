@@ -8,6 +8,7 @@ package org.bigbluebutton.util {
 	import org.bigbluebutton.model.whiteboard.RectangleAnnotation;
 	import org.bigbluebutton.model.whiteboard.TextAnnotation;
 	import org.bigbluebutton.model.whiteboard.TriangleAnnotation;
+	import org.bigbluebutton.model.whiteboard.PollResultAnnotation;
 	
 	public class AnnotationUtil {
 		public static function createAnnotation(an:Object):IAnnotation {
@@ -35,6 +36,10 @@ package org.bigbluebutton.util {
 					break;
 				case AnnotationType.TEXT:
 					return new TextAnnotation(an.type, an.id, an.whiteboardId, an.status, an.fontColor, an.fontSize, an.calcedFontSize, an.dataPoints, an.textBoxHeight, an.textBoxWidth, an.x, an.y, an.text);
+					break;
+				case AnnotationType.POLL:
+					trace("Annotation type : Poll");
+					return new PollResultAnnotation(an);
 					break;
 				default:
 					return null;

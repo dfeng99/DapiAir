@@ -1,16 +1,10 @@
 package org.bigbluebutton.command {
 	
-	import flash.utils.setTimeout;
-	import mx.utils.ObjectUtil;
-	import org.bigbluebutton.core.IBigBlueButtonConnection;
 	import org.bigbluebutton.core.ISaveData;
-	import org.bigbluebutton.core.IUsersService;
 	import org.bigbluebutton.core.IVoiceConnection;
-	import org.bigbluebutton.core.VoiceConnection;
 	import org.bigbluebutton.core.VoiceStreamManager;
 	import org.bigbluebutton.model.IConferenceParameters;
 	import org.bigbluebutton.model.IUserSession;
-	import org.bigbluebutton.model.IUserUISession;
 	import robotlegs.bender.bundles.mvcs.Command;
 	
 	public class ShareMicrophoneCommand extends Command {
