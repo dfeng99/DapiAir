@@ -1,7 +1,5 @@
 package org.bigbluebutton.view.ui.videobutton {
 	
-	import org.bigbluebutton.command.MicrophoneMuteCommand;
-	import org.bigbluebutton.command.MicrophoneMuteSignal;
 	import org.bigbluebutton.command.ShareCameraCommand;
 	import org.bigbluebutton.command.ShareCameraSignal;
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;

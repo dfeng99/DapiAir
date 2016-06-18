@@ -51,7 +51,8 @@ package org.bigbluebutton.command {
 				voiceConnection.successConnected.add(mediaSuccessConnected);
 				voiceConnection.unsuccessConnected.add(mediaUnsuccessConnected);
 				voiceConnection.connect(conferenceParameters, _listenOnly);
-			} else if (!voiceConnection.callActive) {
+			} else if (!voiceConnection.callActive || !_listenOnly) {
+//			} else { 
 				voiceConnection.successConnected.add(mediaSuccessConnected);
 				voiceConnection.unsuccessConnected.add(mediaUnsuccessConnected);
 				voiceConnection.call(_listenOnly);

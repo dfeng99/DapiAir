@@ -46,6 +46,10 @@ package org.bigbluebutton.view.navigation.pages.userdetails {
 				} else {
 					userNameText.text = _user.name;
 				}
+				var fileExt:String = user.avatarURL.substr(-3);
+				if(user.avatarURL.search("avatar.png") === -1 && (fileExt === 'png' || fileExt === 'jpg' || fileExt === 'gif')){
+					userDetailIcon.source = user.avatarURL;
+				}
 				if (_user.presenter) {
 					roleText.text = resourceManager.getString('resources', 'participants.status.presenter');
 					if (_user.role == User.MODERATOR) {

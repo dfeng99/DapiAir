@@ -1,14 +1,15 @@
 package org.bigbluebutton.core {
 	
 	import flash.net.NetConnection;
+	
 	import org.bigbluebutton.model.IConferenceParameters;
 	import org.osflash.signals.ISignal;
-	import org.osflash.signals.Signal;
 	
 	public interface IVoiceConnection {
 		function get unsuccessConnected():ISignal
 		function get successConnected():ISignal
 		function set uri(uri:String):void
+//		function set listenOnly(lo:Boolean):void
 		function get uri():String
 		function get connection():NetConnection
 		function get callActive():Boolean

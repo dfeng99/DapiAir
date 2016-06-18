@@ -41,6 +41,8 @@ package org.bigbluebutton.model {
 		
 		private var _userID:String = UNKNOWN_USER;
 		
+		private var _avatarURL:String;
+		
 		public function get userID():String {
 			return _userID;
 		}
@@ -57,6 +59,14 @@ package org.bigbluebutton.model {
 		
 		public function set name(value:String):void {
 			_name = value;
+		}
+		
+		public function get avatarURL():String {
+			return _avatarURL;
+		}
+		
+		public function set avatarURL(value:String):void {
+			_avatarURL = value;
 		}
 		
 		private var _phoneUser:Boolean = false;

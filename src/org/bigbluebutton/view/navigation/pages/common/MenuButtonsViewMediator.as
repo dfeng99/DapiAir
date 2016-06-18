@@ -2,6 +2,7 @@ package org.bigbluebutton.view.navigation.pages.common {
 	
 	import com.juankpro.ane.localnotif.Notification;
 	import com.juankpro.ane.localnotif.NotificationManager;
+	
 	import flash.desktop.NativeApplication;
 	import flash.desktop.SystemIdleMode;
 	import flash.events.Event;
@@ -10,11 +11,15 @@ package org.bigbluebutton.view.navigation.pages.common {
 	import flash.events.StageOrientationEvent;
 	import flash.events.TouchEvent;
 	import flash.geom.Point;
+	
 	import mx.core.FlexGlobals;
 	import mx.core.mx_internal;
 	import mx.events.FlexEvent;
 	import mx.events.ResizeEvent;
 	import mx.resources.ResourceManager;
+	
+	import spark.transitions.ViewTransitionBase;
+	
 	import org.bigbluebutton.command.DisconnectUserSignal;
 	import org.bigbluebutton.core.IUsersService;
 	import org.bigbluebutton.model.IUserSession;
@@ -26,8 +31,8 @@ package org.bigbluebutton.view.navigation.pages.common {
 	import org.bigbluebutton.view.navigation.pages.TransitionAnimationENUM;
 	import org.bigbluebutton.view.navigation.pages.disconnect.enum.DisconnectEnum;
 	import org.bigbluebutton.view.skins.NavigationButtonSkin;
+	
 	import robotlegs.bender.bundles.mvcs.Mediator;
-	import spark.transitions.ViewTransitionBase;
 	
 	public class MenuButtonsViewMediator extends Mediator {
 		
@@ -81,7 +86,7 @@ package org.bigbluebutton.view.navigation.pages.common {
 			//e.preventDefault();
 		}
 		
-		private function isPushToTalkOn() {
+		private function isPushToTalkOn():Boolean {
 			var micEnabled:Boolean = (userSession.voiceStreamManager && userSession.voiceStreamManager.mic && userSession.voiceConnection.callActive) ? true : false;
 			return userSession.pushToTalk && micEnabled;
 		}

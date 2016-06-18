@@ -22,6 +22,7 @@
 								  verticalAlign="middle" />
 			</s:layout>
 			<s:Image styleName="bigbbbLogoStyle" />
+			<s:Label text="v1.3.1" width="100%" styleName="contentFontSize mood"/>
 		</s:Group>
 
 		<s:Group width="100%"
@@ -77,7 +78,7 @@
 						variables.password="abc123";
 						variables.checksum='2da2f461903873c0d874ee75f84f8a4077724996';
 						
-						var tutorial:URLRequest = new URLRequest('bigbluebutton://dapi01.bzcentre.com/bigbluebutton/api/join');
+						var tutorial:URLRequest = new URLRequest('dapi://dapi01.bzcentre.com/bigbluebutton/api/join');
 						tutorial.method = "get";
 						tutorial.data = 'meetingID=Demo%E5%B1%95%E7%A4%BA%E5%BB%B3&fullName=hello-air&password=abc123&checksum=2da2f461903873c0d874ee75f84f8a4077724996';
 						

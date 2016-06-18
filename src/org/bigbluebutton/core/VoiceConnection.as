@@ -2,9 +2,10 @@ package org.bigbluebutton.core {
 	
 	import flash.net.NetConnection;
 	import flash.net.Responder;
+	
 	import mx.utils.ObjectUtil;
+	
 	import org.bigbluebutton.command.ShareMicrophoneSignal;
-	import org.bigbluebutton.model.ConferenceParameters;
 	import org.bigbluebutton.model.IConferenceParameters;
 	import org.bigbluebutton.model.IUserSession;
 	import org.osflash.signals.ISignal;
@@ -66,6 +67,10 @@ package org.bigbluebutton.core {
 			userSession.userList.me.listenOnly = _listenOnly;
 			call(_listenOnly);
 		}
+//		
+//		public function set listenOnly(lo:Boolean):void{
+//			_listenOnly = lo;
+//		}
 		
 		public function get unsuccessConnected():ISignal {
 			return _unsuccessConnected;
@@ -100,7 +105,8 @@ package org.bigbluebutton.core {
 			_conferenceParameters = confParams;
 			_listenOnly = listenOnly;
 			trace(confParams.username + ", " + confParams.role + ", " + confParams.meetingName + ", " + confParams.externUserID);
-			_username = encodeURIComponent(confParams.externUserID + "-bbbID-" + confParams.username);
+//			_username = encodeURIComponent(confParams.externUserID + "-bbbID-" + confParams.username);
+			_username = encodeURIComponent(confParams.internalUserID + "-bbbID-" + confParams.username);
 			baseConnection.connect(_applicationURI, confParams.conference, userSession.userId, _username, confParams.voicebridge);
 		}
 		
@@ -135,7 +141,7 @@ package org.bigbluebutton.core {
 		//												//
 		//**********************************************//
 		public function call(listenOnly:Boolean = false):void {
-			if (!callActive) {
+			if (!callActive || !listenOnly) {
 				trace(LOG + "call(): starting voice call");
 				baseConnection.connection.call(
 					"voiceconf.call",

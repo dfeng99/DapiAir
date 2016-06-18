@@ -66,7 +66,7 @@
 					voteBtn = new Button();
 					voteBtn.percentWidth = btnWidth;
 					voteBtn.height = 70;
-					voteBtn.setStyle("fontSize", 14);
+					voteBtn.setStyle("fontSize", 24);
 					voteBtn.tabIndex = ++ti;
 					
 					var localizedKey: String = ResourceManager.getInstance().getString('resources','polling.answer.'+e.poll.answers[i].key);

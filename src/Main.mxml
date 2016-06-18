@@ -22,10 +22,13 @@
 	<fx:Script>
 		<![CDATA[
 			import com.adobe.utils.LocaleUtil;
+			
 			import flash.system.Capabilities;
+			
 			import mx.events.FlexEvent;
 			import mx.events.ResizeEvent;
 			import mx.resources.ResourceManager;
+			
 			import org.bigbluebutton.AppConfig;
 			import org.bigbluebutton.core.util.OrientationCalculator;
 			import org.bigbluebutton.core.view.NoTabView;
@@ -65,8 +68,10 @@
 			import org.bigbluebutton.view.ui.videobutton.VideoButtonConfig;
 			import org.osmf.logging.Log;
 			import org.osmf.logging.Logger;
+			
 			import robotlegs.bender.bundles.mvcs.MVCSBundle;
 			import robotlegs.bender.extensions.contextView.ContextView;
+			import robotlegs.bender.extensions.eventDispatcher.EventDispatcherExtension;
 			import robotlegs.bender.extensions.signalCommandMap.SignalCommandMapExtension;
 			import robotlegs.bender.framework.api.IContext;
 			import robotlegs.bender.framework.api.LogLevel;
@@ -111,9 +116,8 @@
 			 */
 			private function setupContext():void {
 				context = new Context()
-					.install(MVCSBundle, SignalCommandMapExtension)
+					.install(MVCSBundle, SignalCommandMapExtension, EventDispatcherExtension)
 					.configure(AppConfig)
-					
 					.configure(LoadingScreenConfig)
 					.configure(PagesNavigatorConfig)
 					.configure(PresentationConfig)
@@ -170,7 +174,7 @@
 			
 			protected function creationCompleteHandler(event:FlexEvent):void {
 			}
-			
+
 			protected function applicationCompleteHandler(event:FlexEvent):void {
 				NativeApplication.nativeApplication.systemIdleMode = SystemIdleMode.KEEP_AWAKE;
 				stage.addEventListener(ResizeEvent.RESIZE, stageOrientationChangingHandler);

@@ -4,7 +4,6 @@ package org.bigbluebutton.view.ui.videobutton {
 	import org.bigbluebutton.command.ShareCameraSignal;
 	import org.bigbluebutton.model.IUserSession;
 	import org.bigbluebutton.model.User;
-	import org.bigbluebutton.model.UserList;
 	import robotlegs.bender.bundles.mvcs.Mediator;
 	
 	public class VideoButtonMediator extends Mediator {

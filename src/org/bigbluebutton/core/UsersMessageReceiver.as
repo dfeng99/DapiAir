@@ -288,6 +288,7 @@ package org.bigbluebutton.core {
 			user.streamName = newUser.webcamStream;
 			user.locked = newUser.locked;
 			user.name = newUser.name;
+			user.avatarURL = newUser.avatarURL;
 			user.phoneUser = newUser.phoneUser;
 			user.presenter = newUser.presenter;
 			user.role = newUser.role;
@@ -420,6 +421,7 @@ package org.bigbluebutton.core {
 		private function handleJoinedMeeting(m:Object):void {
 			var msg:Object = JSON.parse(m.msg);
 			trace(LOG + "handleJoinedMeeting() -- Joining meeting");
+			userSession.userList.me.avatarURL = msg.user.avatarURL;
 			userSession.joinMeetingResponse(msg);
 		}
 		
