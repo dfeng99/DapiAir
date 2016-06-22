@@ -3,7 +3,6 @@ package org.bigbluebutton.model {
 	import mx.collections.ArrayCollection;
 	import org.osflash.signals.ISignal;
 	import org.osflash.signals.Signal;
-	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
 	import spark.collections.Sort;
 	
 	public class UserList {
@@ -44,6 +43,8 @@ package org.bigbluebutton.model {
 		public static const LAUGHTER:int = 17;
 		
 		public static const SAD:int = 18;
+		
+		public static const VIEWER:int = 19;
 		
 		private var _users:ArrayCollection;
 		
@@ -309,7 +310,7 @@ package org.bigbluebutton.model {
 		private function clearPresenter():void {
 			for each (var user:User in _users) {
 				user.presenter = false;
-				userChangeSignal.dispatch(user, PRESENTER);
+				userChangeSignal.dispatch(user, VIEWER);
 			}
 		}
 		

@@ -8,12 +8,8 @@ package org.bigbluebutton.view.navigation.pages.common {
 	import flash.events.Event;
 	import flash.events.InvokeEvent;
 	import flash.events.MouseEvent;
-	import flash.events.StageOrientationEvent;
-	import flash.events.TouchEvent;
-	import flash.geom.Point;
 	
 	import mx.core.FlexGlobals;
-	import mx.core.mx_internal;
 	import mx.events.FlexEvent;
 	import mx.events.ResizeEvent;
 	import mx.resources.ResourceManager;
@@ -29,7 +25,6 @@ package org.bigbluebutton.view.navigation.pages.common {
 	import org.bigbluebutton.model.chat.IChatMessagesSession;
 	import org.bigbluebutton.view.navigation.pages.PagesENUM;
 	import org.bigbluebutton.view.navigation.pages.TransitionAnimationENUM;
-	import org.bigbluebutton.view.navigation.pages.disconnect.enum.DisconnectEnum;
 	import org.bigbluebutton.view.skins.NavigationButtonSkin;
 	
 	import robotlegs.bender.bundles.mvcs.Mediator;
@@ -105,6 +100,19 @@ package org.bigbluebutton.view.navigation.pages.common {
 		private function userChangeHandler(user:User, type:int):void {
 			if (user && user.me && type == UserList.MUTE) {
 				view.pushToTalkButton.enabled = !user.muted;
+			} else if (type == UserList.RAISE_HAND && ! user.me && userSession.userList.me.role == User.MODERATOR) {
+				(view.menuParticipantsButton.skin as NavigationButtonSkin).notification.visible = true;
+			} else if (type == UserList.NO_STATUS && ! user.me && userSession.userList.me.role == User.MODERATOR) {
+				var raisedHandNotification:Boolean = false;
+				for (var i:int; i < userSession.userList.users.length; i++) {
+					if( userSession.userList.users[i].status == User.RAISE_HAND) {
+						(view.menuParticipantsButton.skin as NavigationButtonSkin).notification.visible = true;
+						raisedHandNotification = true;
+					}
+				}
+				if ( ! raisedHandNotification ) {
+					(view.menuParticipantsButton.skin as NavigationButtonSkin).notification.visible = false;
+				}
 			}
 		}
 		
@@ -144,7 +152,7 @@ package org.bigbluebutton.view.navigation.pages.common {
 			userSession.presentationList.currentPresentation.slideChangeSignal.add(updatePresentationNotification);
 		}
 		
-		private function updatePresentationNotification() {
+		private function updatePresentationNotification():void {
 			if (userUISession.currentPage != PagesENUM.PRESENTATION) {
 				(view.menuPresentationButton.skin as NavigationButtonSkin).notification.visible = true;
 			} else {
@@ -157,10 +165,10 @@ package org.bigbluebutton.view.navigation.pages.common {
 			if (userUISession.currentPage == PagesENUM.SPLITCHAT) {
 				notification.visible = false;
 			} else {
-				var data = userUISession.currentPageDetails;
+				var data:Object = userUISession.currentPageDetails;
 				var currentPageIsPublicChat:Boolean = data && data.hasOwnProperty("user") && !data.user;
 				var currentPageIsPrivateChatOfTheSender:Boolean = (data is User && userID == data.userID) || (data && data.hasOwnProperty("user") && data.user && data.user.userID == userID);
-				var iAmSender = (userID == userSession.userId);
+				var iAmSender:Boolean = (userID == userSession.userId);
 				if (!iAmSender) {
 					if (userUISession.currentPage != PagesENUM.CHATROOMS && !(currentPageIsPrivateChatOfTheSender && !publicChat) && !(currentPageIsPublicChat && publicChat)) {
 						notification.visible = true;
@@ -183,12 +191,18 @@ package org.bigbluebutton.view.navigation.pages.common {
 			}
 		}
 		
-		private function updateGuestsNotification():void {
+		private function updateGuestsNotification(property:String = null):void {
 			var numberOfGuests:int = userSession.guestList.users.length;
 			if (numberOfGuests > 0 && userSession.userList.me.role == User.MODERATOR && userUISession.currentPage != PagesENUM.PARTICIPANTS) {
 				(view.menuParticipantsButton.skin as NavigationButtonSkin).notification.visible = true;
 			} else {
 				(view.menuParticipantsButton.skin as NavigationButtonSkin).notification.visible = false;
+			}
+			var numberOfUsers:int = userSession.userList.users.length;
+			if (property != null && numberOfUsers > 0 && Number(property) == UserList.PRESENTER && userUISession.currentPage != PagesENUM.PARTICIPANTS) {
+				(view.menuPresentationButton.skin as NavigationButtonSkin).notification.visible = true;
+			} else {
+				(view.menuPresentationButton.skin as NavigationButtonSkin).notification.visible = false;
 			}
 		}
 		
@@ -204,7 +218,7 @@ package org.bigbluebutton.view.navigation.pages.common {
 		
 		private function userChanged(user:User, property:String = null):void {
 			if (user && user.me) {
-				updateGuestsNotification();
+				updateGuestsNotification(property);
 			}
 		}
 		
@@ -215,7 +229,7 @@ package org.bigbluebutton.view.navigation.pages.common {
 			}
 		}
 		
-		private function configDeskshare() {
+		private function configDeskshare():void {
 			view.menuDeskshareButton.visible = view.menuDeskshareButton.includeInLayout = userSession.deskshareConnection.isStreaming;
 			userSession.deskshareConnection.isStreamingSignal.add(onDeskshareStreamChange);
 		}

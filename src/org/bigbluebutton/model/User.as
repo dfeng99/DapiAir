@@ -1,7 +1,5 @@
 package org.bigbluebutton.model {
 	
-	import org.bigbluebutton.model.chat.ChatMessages;
-	import org.osflash.signals.ISignal;
 	
 	public class User {
 		public static const MODERATOR:String = "MODERATOR";
@@ -16,7 +14,7 @@ package org.bigbluebutton.model {
 		
 		public static const AGREE:String = "AGREE";
 		
-		public static const RAISE_HAND:String = "RAISE_HAND";
+		public static const RAISE_HAND:String = "raiseHand";
 		
 		public static const DISAGREE:String = "DISAGREE";
 		
@@ -30,7 +28,7 @@ package org.bigbluebutton.model {
 		
 		public static const BE_RIGHT_BACK:String = "BE_RIGHT_BACK";
 		
-		public static const LAUGHTER:String = "LAUGHTER";
+		public static const LAUGHTER:String = "happy";
 		
 		public static const SAD:String = "SAD";
 		

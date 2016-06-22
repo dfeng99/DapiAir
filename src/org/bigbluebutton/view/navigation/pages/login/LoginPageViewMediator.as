@@ -1,27 +1,16 @@
 package org.bigbluebutton.view.navigation.pages.login {
 	
-	import flash.desktop.NativeApplication;
 	import flash.events.Event;
-	import flash.events.InvokeEvent;
 	import flash.events.MouseEvent;
-	import flash.filesystem.File;
-	import flash.net.URLVariables;
 	import flash.system.Capabilities;
-	import mx.collections.ArrayCollection;
 	import mx.core.FlexGlobals;
 	import org.bigbluebutton.command.JoinMeetingSignal;
 	import org.bigbluebutton.core.ILoginService;
 	import org.bigbluebutton.core.ISaveData;
 	import org.bigbluebutton.model.IUserSession;
 	import org.bigbluebutton.model.IUserUISession;
-	import org.bigbluebutton.model.UserSession;
-	import org.bigbluebutton.model.UserUISession;
-	import org.bigbluebutton.view.navigation.IPagesNavigatorView;
 	import org.bigbluebutton.view.navigation.pages.PagesENUM;
-	import org.bigbluebutton.view.navigation.pages.login.openroom.recentrooms.Room;
-	import org.flexunit.internals.namespaces.classInternal;
 	import robotlegs.bender.bundles.mvcs.Mediator;
-	import spark.components.Application;
 	
 	public class LoginPageViewMediator extends Mediator {
 		private const LOG:String = "LoginPageViewMediator::";
@@ -91,13 +80,16 @@ package org.bigbluebutton.view.navigation.pages.login {
 			// view.messageText.text = reason;
 		}
 		
-		public function joinRoom(url:String) {
+		public function joinRoom(url:String):void {
 			if (Capabilities.isDebugger) {
 				//saveData.save("rooms", null);
 				// test-install server no longer works with 0.9 mobile client
 				// url = "bigbluebutton://test-install.blindsidenetworks.com/bigbluebutton/api/join?fullName=Air&meetingID=Demo+Meeting&password=ap&checksum=512620179852dadd6fe0665a48bcb852a3c0afac";
 				// url = "bigbluebutton://dapi01.bzcentre.com/bigbluebutton/api/join?meetingID=Demo%E5%B1%95%E7%A4%BA%E5%BB%B3&fullName=hello-air&password=abc123&checksum=2da2f461903873c0d874ee75f84f8a4077724996";
-				url = "dapi://dapi-dev.xflying.com/bigbluebutton/api/join?meetingID=Demo%E5%B1%95%E7%A4%BA%E5%BB%B3&fullName=hello-air&password=abc123&checksum=ac59b24191ec0ff1bbe859864a6a19284d8abf81";
+				//viewer
+				// url = "dapi://dapi-dev.xflying.com/bigbluebutton/api/join?meetingID=Demo%E5%B1%95%E7%A4%BA%E5%BB%B3&fullName=hello-air&password=abc123&checksum=ac59b24191ec0ff1bbe859864a6a19284d8abf81";
+				//presenter
+				url = "dapi://dapi-dev.xflying.com/bigbluebutton/api/join?meetingID=Demo%E5%B1%95%E7%A4%BA%E5%BB%B3&fullName=hello-air&password=host123&checksum=8f125caa8da2b48c8a0defb9803676fbae61daef";
 				//url = "bigbluebutton://143.54.10.103/bigbluebutton/api/join?fullName=User+4704407&meetingID=random-3458293&password=mp&redirect=true&checksum=9102efa4f55e8b920b7f14b1c6bcdee7e0bb9c62";
 				// url = "bigbluebutton://143.54.10.103/bigbluebutton/api/join?fullName=User+3569058&meetingID=random-1143106&password=mp&redirect=true&checksum=41f67390d73ca6fa149842bf082eef72d628c041";
 			}

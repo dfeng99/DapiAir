@@ -8,6 +8,7 @@ package org.bigbluebutton.core {
 	import org.bigbluebutton.model.IUserSession;
 	import org.bigbluebutton.model.User;
 	import org.bigbluebutton.view.navigation.pages.disconnect.enum.DisconnectEnum;
+	import org.bigbluebutton.view.skins.NavigationButtonSkin;
 	
 	public class UsersMessageReceiver implements IMessageListener {
 		private const LOG:String = "UsersMessageReceiver::";
@@ -184,7 +185,7 @@ package org.bigbluebutton.core {
 					userSession.userList.statusChange(msg.userId, User.NO_STATUS);
 					break;
 				default:
-					//userSession.userList.statusChange(msg.userId, msg.emojiStatus);
+					userSession.userList.statusChange(msg.userId, msg.emojiStatus);
 					break;
 			}
 		}
