@@ -22,7 +22,7 @@
 								  verticalAlign="middle" />
 			</s:layout>
 			<s:Image styleName="bigbbbLogoStyle" />
-			<s:Label text="v1.3.3" width="100%" styleName="contentFontSize mood"/>
+			<s:Label text="v1.3.4" width="100%" styleName="contentFontSize mood"/>
 		</s:Group>
 
 		<s:Group width="100%"

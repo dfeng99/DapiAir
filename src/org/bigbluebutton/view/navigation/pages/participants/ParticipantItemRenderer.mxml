@@ -37,6 +37,9 @@
 					beRightBackIcon.visible = beRightBackIcon.includeInLayout = obj.status == User.BE_RIGHT_BACK;
 					laughterIcon.visible = laughterIcon.includeInLayout = obj.status == User.LAUGHTER;
 					sadIcon.visible = sadIcon.includeInLayout = obj.status == User.SAD;
+					neutralIcon.visible = neutralIcon.includeInLayout = obj.status == User.NEUTRAL;
+					confusedIcon.visible = confusedIcon.includeInLayout = obj.status == User.CONFUSED;
+					awayIcon.visible = awayIcon.includeInLayout = obj.status == User.AWAY;
 					if (obj.presenter) {
 						subLabelDisplay.visible = subLabelDisplay.includeInLayout = true;
 						subLabelDisplay.text = resourceManager.getString('resources', 'participants.status.presenter');
@@ -95,6 +98,15 @@
 				 height="100%" />
 		<s:Image id="sadIcon"
 				 styleName="iconStyle sadIconStyle"
+				 height="100%" />
+		<s:Image id="neutralIcon"
+				 styleName="iconStyle neutralIconStyle"
+				 height="100%" />
+		<s:Image id="confusedIcon"
+				 styleName="iconStyle confusedIconStyle"
+				 height="100%" />
+		<s:Image id="awayIcon"
+				 styleName="iconStyle awayIconStyle"
 				 height="100%" />
 
 		<s:Group width="70%">

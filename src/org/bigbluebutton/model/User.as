@@ -30,7 +30,13 @@ package org.bigbluebutton.model {
 		
 		public static const LAUGHTER:String = "happy";
 		
-		public static const SAD:String = "SAD";
+		public static const NEUTRAL:String = "neutral";
+		
+		public static const CONFUSED:String = "confused";
+		
+		public static const SAD:String = "sad";
+		
+		public static const AWAY:String = "away";
 		
 		/**
 		 * Flag to tell that user is in the process of leaving the meeting.

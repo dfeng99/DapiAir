@@ -467,7 +467,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Button.changeStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-mdpi/icon-6-smiling-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-mdpi/Emotes-face-smile-icon.png");
 	}
 	
 	s|Button.clearButtonStyle
@@ -482,7 +482,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Button.raiseHandButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-mdpi/icon-3-high-five.png");
+		backgroundImage: Embed(source="assets/res/drawable-mdpi/Hands-One-Finger-icon.png");
 	}
 	
 	s|Button.audioSettingsListenOnlyButtonStyle
@@ -577,7 +577,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Image.handIconStyle, s|Button.handStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-mdpi/icon-3-high-five.png");
+		backgroundImage: Embed(source="assets/res/drawable-mdpi/Hands-One-Finger-icon.png");
 	}
 	
 	s|Image.agreeIconStyle, s|Button.agreeStatusButtonStyle
@@ -617,12 +617,27 @@ s|Image.bigbbbLogoStyle
 	
 	s|Image.laughterIconStyle, s|Button.laughterStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-mdpi/icon-6-smiling-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-mdpi/Emotes-face-smile-icon.png");
 	}
+	
+	s|Image.neutralIconStyle, s|Button.neutralStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-mdpi/Emotes-face-plain-icon.png");
+	}
+	
+	s|Image.confusedIconStyle, s|Button.confusedStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-mdpi/Smiley-reflective-icon.png");
+	}
+	
+	s|Image.awayIconStyle, s|Button.awayStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-mdpi/Actions-im-user-away-icon.png");
+	}	
 	
 	s|Image.sadIconStyle, s|Button.sadStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-mdpi/icon-7-sad-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-mdpi/Emotes-face-sad-icon.png");
 	}
 	
 	s|Image.userIconStyle, s|Button.noStatusButtonStyle
@@ -922,7 +937,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Button.changeStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-hdpi/icon-6-smiling-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-hdpi/Emotes-face-smile-icon.png");
 	}
 	
 	s|Button.clearButtonStyle
@@ -937,7 +952,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Button.raiseHandButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-hdpi/icon-3-high-five.png");
+		backgroundImage: Embed(source="assets/res/drawable-hdpi/Hands-One-Finger-icon.png");
 	}
 	
 	s|Button.audioSettingsListenOnlyButtonStyle
@@ -1061,7 +1076,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Image.handIconStyle, s|Button.handStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-hdpi/icon-3-high-five.png");
+		backgroundImage: Embed(source="assets/res/drawable-hdpi/Hands-One-Finger-icon.png");
 	}
 	
 	s|Image.disagreeIconStyle, s|Button.disagreeStatusButtonStyle
@@ -1096,13 +1111,28 @@ s|Image.bigbbbLogoStyle
 	
 	s|Image.laughterIconStyle, s|Button.laughterStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-hdpi/icon-6-smiling-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-hdpi/Emotes-face-smile-icon.png");
+	}
+
+	s|Image.confusedIconStyle, s|Button.confusedStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-hdpi/Smiley-reflective-icon.png");
 	}
 	
 	s|Image.sadIconStyle, s|Button.sadStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-hdpi/icon-7-sad-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-hdpi/Emotes-face-sad-icon.png");
 	}
+	
+	s|Image.neutralIconStyle, s|Button.neutralStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-hdpi/Emotes-face-plain-icon.png");
+	}
+	
+	s|Image.awayIconStyle, s|Button.awayStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-hdpi/Actions-im-user-away-icon.png");
+	}	
 	
 	s|Image.userIconStyle, s|Button.noStatusButtonStyle
 	{
@@ -1401,7 +1431,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Button.changeStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xhdpi/icon-6-smiling-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-xhdpi/Emotes-face-smile-icon.png");
 	}
 	
 	s|Button.clearButtonStyle
@@ -1416,7 +1446,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Button.raiseHandButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xhdpi/icon-3-high-five.png");
+		backgroundImage: Embed(source="assets/res/drawable-xhdpi/Hands-One-Finger-icon.png");
 	}
 	
 	s|Button.audioSettingsListenOnlyButtonStyle
@@ -1540,7 +1570,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Image.handIconStyle, s|Button.handStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xhdpi/icon-3-high-five.png");
+		backgroundImage: Embed(source="assets/res/drawable-xhdpi/Hands-One-Finger-icon.png");
 	}
 	
 	s|Image.disagreeIconStyle, s|Button.disagreeStatusButtonStyle
@@ -1575,13 +1605,28 @@ s|Image.bigbbbLogoStyle
 	
 	s|Image.laughterIconStyle, s|Button.laughterStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xhdpi/icon-6-smiling-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-xhdpi/Emotes-face-smile-icon.png");
+	}
+	
+	s|Image.confusedIconStyle, s|Button.confusedStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-xhdpi/Smiley-reflective-icon.png");
 	}
 	
 	s|Image.sadIconStyle, s|Button.sadStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xhdpi/icon-7-sad-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-xhdpi/Emotes-face-sad-icon.png");
 	}
+	
+	s|Image.neutralIconStyle, s|Button.neutralStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-xhdpi/Emotes-face-plain-icon.png");
+	}
+	
+	s|Image.awayIconStyle, s|Button.awayStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-xhdpi/Actions-im-user-away-icon.png");
+	}	
 	
 	s|Image.userIconStyle, s|Button.noStatusButtonStyle
 	{
@@ -1906,7 +1951,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Button.changeStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/icon-6-smiling-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Emotes-face-smile-icon.png");
 	}
 	
 	s|Button.clearButtonStyle
@@ -1921,7 +1966,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Button.raiseHandButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/icon-3-high-five.png");
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Hands-One-Finger-icon.png");
 	}
 	
 	s|Button.audioSettingsListenOnlyButtonStyle
@@ -2021,7 +2066,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Image.handIconStyle, s|Button.handStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/icon-3-high-five.png");
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Hands-One-Finger-icon.png");
 	}
 	
 	s|Image.disagreeIconStyle, s|Button.disagreeStatusButtonStyle
@@ -2056,13 +2101,28 @@ s|Image.bigbbbLogoStyle
 	
 	s|Image.laughterIconStyle, s|Button.laughterStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/icon-6-smiling-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Emotes-face-smile-icon.png");
+	}
+	
+	s|Image.confusedIconStyle, s|Button.confusedStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Smiley-reflective-icon.png");
 	}
 	
 	s|Image.sadIconStyle, s|Button.sadStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/icon-7-sad-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Emotes-face-sad-icon.png");
 	}
+	
+	s|Image.neutralIconStyle, s|Button.neutralStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Emotes-face-plain-icon.png");
+	}
+	
+	s|Image.awayIconStyle, s|Button.awayStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Actions-im-user-away-icon.png");
+	}	
 	
 	s|Image.userIconStyle, s|Button.noStatusButtonStyle
 	{
@@ -2387,7 +2447,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Button.changeStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/icon-6-smiling-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Emotes-face-smile-icon.png");
 	}
 	
 	s|Button.clearButtonStyle
@@ -2402,7 +2462,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Button.raiseHandButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/icon-3-high-five.png");
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Hands-One-Finger-icon.png");
 	}
 	
 	s|Button.audioSettingsListenOnlyButtonStyle
@@ -2502,7 +2562,7 @@ s|Image.bigbbbLogoStyle
 	
 	s|Image.handIconStyle, s|Button.handStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/icon-3-high-five.png");
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Hands-One-Finger-icon.png");
 	}
 	
 	s|Image.disagreeIconStyle, s|Button.disagreeStatusButtonStyle
@@ -2537,13 +2597,28 @@ s|Image.bigbbbLogoStyle
 	
 	s|Image.laughterIconStyle, s|Button.laughterStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/icon-6-smiling-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Emotes-face-smile-icon.png");
+	}
+	
+	s|Image.confusedIconStyle, s|Button.confusedStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Smiley-reflective-icon.png");
 	}
 	
 	s|Image.sadIconStyle, s|Button.sadStatusButtonStyle
 	{
-		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/icon-7-sad-face.png");
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Emotes-face-sad-icon.png");
 	}
+	
+	s|Image.neutralIconStyle, s|Button.neutralStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Emotes-face-plain-icon.png");
+	}
+	
+	s|Image.awayIconStyle, s|Button.awayStatusButtonStyle
+	{
+		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/Actions-im-user-away-icon.png");
+	}	
 	
 	s|Image.userIconStyle, s|Button.noStatusButtonStyle
 	{

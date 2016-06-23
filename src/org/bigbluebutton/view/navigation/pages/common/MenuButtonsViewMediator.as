@@ -100,18 +100,28 @@ package org.bigbluebutton.view.navigation.pages.common {
 		private function userChangeHandler(user:User, type:int):void {
 			if (user && user.me && type == UserList.MUTE) {
 				view.pushToTalkButton.enabled = !user.muted;
-			} else if (type == UserList.RAISE_HAND && ! user.me && userSession.userList.me.role == User.MODERATOR) {
-				(view.menuParticipantsButton.skin as NavigationButtonSkin).notification.visible = true;
-			} else if (type == UserList.NO_STATUS && ! user.me && userSession.userList.me.role == User.MODERATOR) {
-				var raisedHandNotification:Boolean = false;
-				for (var i:int; i < userSession.userList.users.length; i++) {
-					if( userSession.userList.users[i].status == User.RAISE_HAND) {
+			} else if ( ! user.me && userSession.userList.me.role == User.MODERATOR) {
+				switch(type){
+					case UserList.RAISE_HAND:
+					case UserList.LAUGHTER:
+					case UserList.SAD:
+					case UserList.NEUTRAL:
+					case UserList.CONFUSED:
+					case UserList.AWAY:
 						(view.menuParticipantsButton.skin as NavigationButtonSkin).notification.visible = true;
-						raisedHandNotification = true;
-					}
-				}
-				if ( ! raisedHandNotification ) {
-					(view.menuParticipantsButton.skin as NavigationButtonSkin).notification.visible = false;
+						break;
+					case UserList.NO_STATUS:
+						var raisedHandNotification:Boolean = false;
+						for (var i:int; i < userSession.userList.users.length; i++) {
+							if( userSession.userList.users[i].status == User.RAISE_HAND) {
+								(view.menuParticipantsButton.skin as NavigationButtonSkin).notification.visible = true;
+								raisedHandNotification = true;
+							}
+						}
+						if ( ! raisedHandNotification ) {
+							(view.menuParticipantsButton.skin as NavigationButtonSkin).notification.visible = false;
+						}
+						break;
 				}
 			}
 		}

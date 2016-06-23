@@ -46,6 +46,12 @@ package org.bigbluebutton.model {
 		
 		public static const VIEWER:int = 19;
 		
+		public static const NEUTRAL:int = 20;
+		
+		public static const CONFUSED:int = 21;
+		
+		public static const AWAY:int = 22;
+		
 		private var _users:ArrayCollection;
 		
 		[Bindable]
@@ -218,8 +224,17 @@ package org.bigbluebutton.model {
 				if (newuser.status == User.LAUGHTER) {
 					userChangeSignal.dispatch(newuser, LAUGHTER);
 				}
+				if (newuser.status == User.NEUTRAL) {
+					userChangeSignal.dispatch(newuser, NEUTRAL);
+				}
 				if (newuser.status == User.SAD) {
 					userChangeSignal.dispatch(newuser, SAD);
+				}
+				if (newuser.status == User.CONFUSED) {
+					userChangeSignal.dispatch(newuser, CONFUSED);
+				}
+				if (newuser.status == User.AWAY) {
+					userChangeSignal.dispatch(newuser, AWAY);
 				}
 				if (newuser.status == User.NO_STATUS) {
 					userChangeSignal.dispatch(newuser, NO_STATUS);
@@ -386,6 +401,15 @@ package org.bigbluebutton.model {
 					case User.SAD:
 						userChangeSignal.dispatch(p.participant, SAD);
 						break;
+					case User.NEUTRAL:
+						userChangeSignal.dispatch(p.participant, NEUTRAL);
+						break;	
+					case User.CONFUSED:
+						userChangeSignal.dispatch(p.participant, CONFUSED);
+						break;						
+					case User.AWAY:
+						userChangeSignal.dispatch(p.participant, AWAY);
+						break;		
 					case User.NO_STATUS:
 						userChangeSignal.dispatch(p.participant, NO_STATUS);
 				}

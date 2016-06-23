@@ -38,6 +38,12 @@
 							   signal="LAUGHTER" />
 					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.sad')}"
 							   signal="SAD" />
+					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.neutral')}"
+							   signal="NEUTRAL" />
+					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.confused')}"
+							   signal="CONFUSED" />
+					<fx:Object data="{resourceManager.getString('resources', 'profile.settings.away')}"
+							   signal="AWAY" />
 				</s:ArrayList>
 			</s:List>
 		</s:VGroup>

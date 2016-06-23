@@ -2,11 +2,11 @@ package org.bigbluebutton.view.navigation.pages.profile {
 	
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.events.StageOrientationEvent;
+	
 	import mx.core.FlexGlobals;
-	import mx.events.ItemClickEvent;
 	import mx.events.ResizeEvent;
 	import mx.resources.ResourceManager;
+	
 	import org.bigbluebutton.command.ClearUserStatusSignal;
 	import org.bigbluebutton.command.MoodSignal;
 	import org.bigbluebutton.core.IUsersService;
@@ -14,13 +14,10 @@ package org.bigbluebutton.view.navigation.pages.profile {
 	import org.bigbluebutton.model.IUserSession;
 	import org.bigbluebutton.model.IUserUISession;
 	import org.bigbluebutton.model.User;
-	import org.bigbluebutton.model.UserList;
 	import org.bigbluebutton.view.navigation.pages.PagesENUM;
 	import org.bigbluebutton.view.navigation.pages.splitsettings.SplitViewEvent;
-	import org.osflash.signals.Signal;
+	
 	import robotlegs.bender.bundles.mvcs.Mediator;
-	import spark.components.Button;
-	import spark.events.IndexChangeEvent;
 	
 	public class ProfileViewMediator extends Mediator {
 		
@@ -83,14 +80,14 @@ package org.bigbluebutton.view.navigation.pages.profile {
 		}
 		
 		private function stageOrientationChangingHandler(e:Event):void {
-			var tabletLandscape = FlexGlobals.topLevelApplication.isTabletLandscape();
+			var tabletLandscape:Boolean = FlexGlobals.topLevelApplication.isTabletLandscape();
 			if (tabletLandscape) {
 				userUISession.popPage();
 				userUISession.pushPage(PagesENUM.SPLITSETTINGS);
 			}
 		}
 		
-		private function changeStatusIcon(status:String) {
+		private function changeStatusIcon(status:String):void {
 			switch (status) {
 				case User.RAISE_HAND:
 					view.statusButton.styleName = "handStatusButtonStyle videoAudioSettingStyle contentFontSize";
@@ -122,6 +119,15 @@ package org.bigbluebutton.view.navigation.pages.profile {
 					break;
 				case User.SAD:
 					view.statusButton.styleName = "sadStatusButtonStyle";
+					break;
+				case User.NEUTRAL:
+					view.statusButton.styleName = "neutralStatusButtonStyle";
+					break;
+				case User.CONFUSED:
+					view.statusButton.styleName = "confusedStatusButtonStyle";
+					break;				
+				case User.AWAY:
+					view.statusButton.styleName = "awayStatusButtonStyle";
 					break;
 				case User.NO_STATUS:
 					view.statusButton.styleName = "noStatusButtonStyle";

@@ -259,6 +259,15 @@ package org.bigbluebutton.core {
 				case "SAD":
 					userSession.userList.statusChange(msg.userID, User.SAD);
 					break;
+				case "NEUTRAL":
+					userSession.userList.statusChange(msg.userID, User.NEUTRAL);
+					break;
+				case "AWAY":
+					userSession.userList.statusChange(msg.userID, User.AWAY);
+					break;
+				case "CONFUSED":
+					userSession.userList.statusChange(msg.userID, User.CONFUSED);
+					break;
 			}
 		}
 		
@@ -333,6 +342,15 @@ package org.bigbluebutton.core {
 						break;
 					case "SAD":
 						user.status = User.SAD;
+						break;
+					case "CONFUSED":
+						user.status = User.CONFUSED;
+						break;
+					case "NEUTRAL":
+						user.status = User.NEUTRAL;
+						break;
+					case "AWAY":
+						user.status = User.AWAY;
 						break;
 					case "RAISE_HAND":
 						user.status = User.RAISE_HAND;
